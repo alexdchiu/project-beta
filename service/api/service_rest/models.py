@@ -3,6 +3,9 @@ from django.db import models
 # Create your models here.
 class VinVO(models.Model):
   vin = models.CharField(max_length=17, unique=True)
+  color = models.CharField(max_length=50)
+  year = models.PositiveSmallIntegerField()
+  model = models.CharField(max_length=100)
 
   def __str__(self):
     return self.vin

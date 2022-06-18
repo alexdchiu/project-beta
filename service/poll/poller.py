@@ -16,11 +16,11 @@ from service_rest.models import VinVO
 def get_vins():
     response = requests.get("http://wardrobe-api:8100/api/automobiles/")
     content = json.loads(response.content)
-    for automobile in content["automobiles"]:
+    for auto in content["autos"]:
         VinVO.objects.update_or_create(
-            href= automobile["href"],
+            href= auto["href"],
             defaults={
-                "vin": automobile["vin"],
+                "vin": auto["vin"],
             }
         )
 
