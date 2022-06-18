@@ -11,6 +11,18 @@ django.setup()
 
 # Import models from service_rest, here.
 # from service_rest.models import Something
+from service_rest.models import VinVO
+
+def get_vins():
+    response = requests.get("http://wardrobe-api:8100/api/automobiles/")
+    content = json.loads(response.content)
+    for automobile in content["automobiles"]:
+        VinVO.objects.update_or_create(
+            href= automobile["href"],
+            defaults={
+                "vin": automobile["vin"],
+            }
+        )
 
 def poll():
     while True:
