@@ -15,7 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from sales_rest.views import api_list_sale_records
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(
+        "salerecords/",
+        api_list_sale_records,
+        name="list_sale_records",
+    ),
+    path(
+        "salerecords/new/",
+        api_list_sale_records,
+        name="create_sales_record",
+    ),
+    # path(
+    #      "salesperson/<int:salesperson_vo_id>/salesrecord/",
+    #     api_list_sale_records,
+    #     name="list_sale_records_for_sales_person",
+    # ),
 ]
