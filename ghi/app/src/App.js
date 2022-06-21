@@ -6,6 +6,10 @@ import CreateSalesPerson from './CreateSalesPerson';
 import CreateSalesRecord from './CreateSalesRecord';
 import SaleRecordList from './SalesRecordList';
 import SaleRecordByPerson from './SaleRecordByPerson';
+import Automobiles from './Automobiles';
+import Manufacturers from './Manufacturer';
+import VehicleModels from './Vehiclemodels';
+
 
 function App() {
   return (
@@ -29,6 +33,15 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/salerecordbyperson" element={<SaleRecordByPerson />} />
+        </Routes>
+        <Routes>
+          <Route path="/automobiles" element={<Automobiles />} />
+        </Routes>
+        <Routes>
+          <Route path="/manufacturers" element={<Manufacturers />} />
+        </Routes>
+        <Routes>
+          <Route path="/models" element={<VehicleModels />} />
         </Routes>
       </div>
     </BrowserRouter>
