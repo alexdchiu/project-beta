@@ -11,17 +11,17 @@ django.setup()
 
 # Import models from service_rest, here.
 # from service_rest.models import Something
-from service_rest.models import VinVO
+from service_rest.models import InventoryVinVO
 
 def get_vins():
-    response = requests.get("http://wardrobe-api:8100/api/automobiles/")
+    response = requests.get("http://inventory-api:8000/api/automobiles/")
     content = json.loads(response.content)
+    print(content)
     for auto in content["autos"]:
-        VinVO.objects.update_or_create(
-            href= auto["href"],
-            defaults={
-                "vin": auto["vin"],
-            }
+        InventoryVinVO.objects.update_or_create(
+            vin = auto["vin"],
+            # defaults={
+            # }
         )
 
 def poll():
@@ -29,6 +29,8 @@ def poll():
         print('Service poller polling for data')
         try:
             # Write your polling logic, here
+            get_vins()
+            # print('test test')
             pass
         except Exception as e:
             print(e, file=sys.stderr)
