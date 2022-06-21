@@ -16,7 +16,7 @@ from service_rest.models import InventoryVinVO
 def get_vins():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
     content = json.loads(response.content)
-    print(content)
+    # print(content)
     for auto in content["autos"]:
         InventoryVinVO.objects.update_or_create(
             vin = auto["vin"],
