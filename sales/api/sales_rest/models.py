@@ -28,6 +28,6 @@ class Customer(models.Model):
 class SalesRecord(models.Model): 
     saleperson = models.ForeignKey(SalesPerson, related_name="salepersons", on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, related_name="customers", on_delete=models.CASCADE) 
-    price = models.DecimalField(max_digits=100, decimal_places=2)
+    price = models.CharField(max_length=200)
     automobile = models.ForeignKey(AutomobileVO, related_name="automobiles", on_delete=models.CASCADE) 
 

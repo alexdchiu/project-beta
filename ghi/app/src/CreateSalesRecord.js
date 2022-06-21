@@ -67,9 +67,6 @@ class CreateSalesRecord extends React.Component {
       this.setState({autos: autoData.autos});
     }
 
-
-
-
   }
 
 

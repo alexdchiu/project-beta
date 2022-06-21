@@ -49,9 +49,9 @@ urlpatterns = [
         api_salesperson,
         name="list_salesperson",
     ),
-    # path(
-    #      "salesperson/<int:salesperson_vo_id>/salesrecord/",
-    #     api_list_sale_records,
-    #     name="list_sale_records_for_sales_person",
-    # ),
+    path(
+         "salesperson/<int:salesperson_vo_id>/salesrecord/",
+        api_list_sale_records,
+        name="list_sale_records_for_sales_person",
+    ),
 ]
