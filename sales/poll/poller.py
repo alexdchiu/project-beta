@@ -12,16 +12,13 @@ django.setup()
 from sales_rest.models import AutomobileVO
 
 def get_automobiles():
-    response = requests.get("http://inventory-api:8100/api/automobiles/")
+    response = requests.get("http://inventory-api:8000/api/automobiles/")
     content = json.loads(response.content)
-    for automobile in content["automobile"]:
+    for automobile in content["autos"]:
         AutomobileVO.objects.update_or_create(
-            href = automobile["href"], 
-            sold = automobile["sold"]
+            vin = automobile["vin"], 
             defaults = {
-            "color": automobile["color"],
-            "year": automobile["year"],
-            "vin": automobile["vin"], 
+            "sold": automobile["sold"],
             }
         )
 
