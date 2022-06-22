@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from service_rest.views import api_list_appointments, api_list_technicians, api_list_inventory_vin, api_delete_appointment
+from service_rest.views import api_list_appointments, api_list_technicians, api_list_inventory_vin, api_update_or_delete_appointment
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('appointments/', api_list_appointments, name="list_appointments"),
-    path('appointments/<int:pk>', api_delete_appointment, name="delete_appointment"),
+    path('appointments/<int:pk>', api_update_or_delete_appointment, name="update_or_delete_appointment"),
     path('inventoryvins/', api_list_inventory_vin, name="list_inventory_vins"),
     path('technicians/', api_list_technicians, name="list_technicians"),
 ]

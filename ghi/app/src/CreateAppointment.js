@@ -46,6 +46,7 @@ class CreateAppointmentForm extends React.Component {
         reason: '',
       }
       this.setState(cleared)
+      alert("Appointment successfully created!")
     }
   }
 

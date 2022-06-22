@@ -38,7 +38,7 @@ class TimeEncoder(json.JSONEncoder):
 
 class AppointmentListEncoder(ModelEncoder):
   model = Appointment
-  properties = ["id", "vin", "owner", "date", "time", "technician", "reason"]
+  properties = ["id", "vin", "owner", "date", "time", "technician", "reason", "finished",]
   encoders = {
     "technician": TechnicianDetailEncoder(),
     "date": DateEncoder(),
@@ -51,10 +51,11 @@ class AppointmentDetailEncoder(ModelEncoder):
     "id",
     "vin",
     "owner",
-    "date",
-    "time",
+    # "date",
+    # "time",
     "technician",
     "reason",
+    "finished",
   ]
   encoders = {
     "technician": TechnicianDetailEncoder(),
@@ -65,8 +66,9 @@ class AppointmentDetailEncoder(ModelEncoder):
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
   if request.method == "GET":
+    # appointments = Appointment.objects.get()
     appointments = Appointment.objects.all()
-    print(appointments)
+    # print(appointments)
     return JsonResponse (
       {"appointments": appointments},
       encoder = AppointmentListEncoder,
@@ -84,19 +86,13 @@ def api_list_appointments(request):
       )
     
     appointment = Appointment.objects.create(**content)
+    print(type(content))
     return JsonResponse(
       appointment,
-      encoder = AppointmentListEncoder(),
+      encoder = AppointmentDetailEncoder,
       safe = False,
     )
 
-# @require_http_methods(["GET"])
-# def api_list_vins(request):
-#   vins = Vin.objects.all()
-#   return JsonResponse(
-#     {"vins": vins},
-#     encoder = VinListEncoder,
-#   )
 
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
@@ -132,7 +128,26 @@ def api_list_inventory_vin(request):
   )
 
 
-@require_http_methods(["DELETE"])
-def api_delete_appointment(request, pk):
-  count, _ = Appointment.objects.filter(id=pk).delete()
-  return JsonResponse({"deleted": count > 0})
+@require_http_methods(["DELETE", "PUT"])
+def api_update_or_delete_appointment(request, pk):
+  if request.method == "DELETE":
+    count, _ = Appointment.objects.filter(id=pk).delete()
+    return JsonResponse({"deleted": count > 0})
+  
+  else:
+    try:
+      content = json.loads(request.body)
+      appointment = Appointment.objects.get(id=pk)
+      finished = 'finished'
+      if finished in content:
+        setattr(appointment, finished, content['finished'])
+        appointment.save()
+        return JsonResponse (
+          appointment,
+          encoder = AppointmentDetailEncoder,
+          safe = False,
+        )
+    except:
+      response = JsonResponse({"message": "Update error"})
+      response.status_code = 404
+      return response

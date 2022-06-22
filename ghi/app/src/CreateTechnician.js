@@ -33,6 +33,7 @@ class CreateTechnicianForm extends React.Component {
         number: '',
       }
       this.setState(cleared)
+      alert("Technician successfully created!")
     }
   }
 

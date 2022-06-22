@@ -36,7 +36,8 @@ class Appointment(models.Model):
     on_delete=models.CASCADE,
   )
   reason = models.TextField()
+  finished = models.BooleanField(default=False)
 
   def __str__(self):
-    return f'{self.date} - {self.vin} ({self.reason})'
+    return f'{self.id} - {self.vin}'
 
