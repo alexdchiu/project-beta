@@ -42,7 +42,7 @@ class CreateAutomobile extends React.Component {
 
   handleModelChange(event) {
     const value = event.target.value
-    this.setState({model_id:value})
+    this.setState({modelId:value})
   }
 
   async handleSubmit(e) {
@@ -51,7 +51,7 @@ class CreateAutomobile extends React.Component {
     data.model_id = data.modelId
     delete data.modelId
     delete data.models
-    // console.log(data)
+    console.log(data)
 
     const automobileUrl = 'http://localhost:8100/api/automobiles/'
     const fetchConfig = {
