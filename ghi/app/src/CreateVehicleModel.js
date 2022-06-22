@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-class CreateVehicle extends React.Component {
+class CreateVehicleModel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -108,4 +108,4 @@ class CreateVehicle extends React.Component {
 
 }
 
-export default CreateVehicle
+export default CreateVehicleModel

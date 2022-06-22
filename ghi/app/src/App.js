@@ -7,6 +7,7 @@ import CreateAppointmentForm from './CreateAppointment';
 import CreateTechnicianForm from './CreateTechnician';
 import CreateManufacturer from './CreateManufacturer';
 import CreateVehicleModel from './CreateVehicleModel';
+import CreateAutomobile from './CreateAutomobile';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/technicians" element={<CreateTechnicianForm />} />
           <Route path="/manufacturers/new" element={<CreateManufacturer />} />
           <Route path="/models/new" element={<CreateVehicleModel />} />
+          <Route path="/automobiles/new" element={<CreateAutomobile />} />
         </Routes>
       </div>
     </BrowserRouter>
