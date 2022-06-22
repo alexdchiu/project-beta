@@ -34,6 +34,24 @@ class CreateSalesRecord extends React.Component {
       },
     };
     const response = await fetch(salerecordURL, fetchConfig);
+
+    const automobileURL = `http://localhost:8100/api/automobiles/${this.state.automobile}/`;
+    const autofetchConfig = {
+      method: "PUT",
+      body: JSON.stringify({ sold: true}),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const autoResponse = await fetch(automobileURL, autofetchConfig);
+    if (autoResponse.ok) {
+      console.log('Car Sold', autoResponse);
+    } else {
+      console.error(autoResponse);
+    }
+
+
+
     if (response.ok) {
       const cleared = {
         saleperson: '',
