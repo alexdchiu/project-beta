@@ -42,7 +42,7 @@ class CreateAutomobile extends React.Component {
 
   handleModelChange(event) {
     const value = event.target.value
-    this.setState({model_id:value})
+    this.setState({modelId:value})
   }
 
   async handleSubmit(e) {
