@@ -25,7 +25,7 @@ class SearchAppointments extends React.Component {
       if (appointmentResponse.ok && inventoryVinResponse.ok) {
         const appointmentData = await appointmentResponse.json()
         const inventoryVinData = await inventoryVinResponse.json()
-        console.log('appointment data', appointmentData.appointments)
+        // console.log('appointment data', appointmentData.appointments)
         // console.log('inventory vins data', inventoryVinData.inventory_vins)
         const appointments = []
         for (let appointment of appointmentData.appointments) {
@@ -40,7 +40,6 @@ class SearchAppointments extends React.Component {
         this.setState({
           allAppointments: appointments,
           inventoryVins: inventoryVins,
-          filteredAppointments: appointments,
         })
       }
     } catch (e) {
@@ -88,13 +87,14 @@ class SearchAppointments extends React.Component {
 
   handleSearch(e) {
     e.preventDefault()
+    this.getAppointmentsandInventoryVins()
     const value = {...this.state}['searchText']
     this.setState({searchText:value})
     const searchFor = value.toLowerCase()
     let currentList = this.state.allAppointments
     let resultsList = []
     for (let appointment of currentList) {
-      console.log('appointment', appointment, 'searchFor', searchFor)
+      // console.log('appointment.vin', appointment.vin, 'searchFor', searchFor)
       if (appointment.vin.toLowerCase().includes(searchFor)) {
         resultsList.push(appointment)
       }
@@ -102,7 +102,7 @@ class SearchAppointments extends React.Component {
     this.setState(
       {filteredAppointments: resultsList}
     )
-    // console.log(this.state.filteredAppointments)
+    // console.log('resultsList', resultsList)
   }
 
   render () {
@@ -137,7 +137,7 @@ class SearchAppointments extends React.Component {
           <tbody>
             {this.state.filteredAppointments.map(appointment => {
               return (
-                <tr key={appointment.vin}>
+                <tr key={appointment.id}>
                   <td>{appointment.vin}</td>
                   <td>{appointment.owner}</td>
                   <td>{appointment.date}</td>

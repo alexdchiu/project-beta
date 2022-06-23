@@ -86,7 +86,7 @@ class CreateAppointmentForm extends React.Component {
     const response = await fetch(url)
     if (response.ok) {
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       this.setState({technicians:data.technicians})
     }
   }

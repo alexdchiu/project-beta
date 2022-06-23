@@ -66,10 +66,12 @@ class AppointmentsList extends React.Component {
     // console.log(e.target.id)
     const data = {...this.state};
     const appointments = data.appointments
-    // console.log(appointments)
+    console.log(appointments)
     var filtered_data = appointments.filter(obj => {
-      return obj.vin === e.target.value
+      // console.log('obj', obj.id, 'targetId', typeof(e.target.id))
+      return obj.id === Number(e.target.id)
     })
+    // console.log(filtered_data)
     filtered_data[0]['finished'] = true
     const appointmentId = e.target.id
     // console.log('update', filtered_data)
@@ -114,7 +116,7 @@ class AppointmentsList extends React.Component {
       <tbody>
        {this.state.appointments.map(appointment => {
         return (
-          <tr key={appointment.vin}>
+          <tr key={appointment.id}>
             <td>{appointment.vin}</td>
             <td>{appointment.owner}</td>
             <td>{appointment.date}</td>
@@ -127,7 +129,7 @@ class AppointmentsList extends React.Component {
             </td>
             <td>
               <button value={appointment.id} type="button" onClick={this.handleDelete} className="btn btn-danger">Cancel</button>
-              <button value={appointment.vin} id={appointment.id} type="button" onClick={this.handleFinish} className="btn btn-success">Finished</button>
+              <button value={appointment.id} id={appointment.id} type="button" onClick={this.handleFinish} className="btn btn-success">Finished</button>
             </td>
           </tr>
         )

@@ -19,7 +19,7 @@ class CreateManufacturer extends React.Component {
   async handleSubmit(e) {
     e.preventDefault()
     const data = {...this.state}
-    console.log(data)
+    // console.log(data)
 
     const manufacturerUrl = 'http://localhost:8100/api/manufacturers/'
     const fetchConfig = {

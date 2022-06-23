@@ -106,7 +106,7 @@ class CreateAutomobile extends React.Component {
                 <label htmlFor="vin">VIN</label>
               </div>
               <div className="form-floating mb-3">
-                <input onChange={this.handleSoldChange} placeholder="sold" required type="checkbox" name="sold" id="sold" value={this.state.sold} />
+                <input onChange={this.handleSoldChange} placeholder="sold" type="checkbox" name="sold" id="sold" value={this.state.sold} />
                 <label htmlFor="sold">Sold?</label>
               </div>
               <div className="mb-3">
