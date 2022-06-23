@@ -9,7 +9,7 @@ from .encoders import (
 )
 from .models import Automobile, Manufacturer, VehicleModel
 
-
+#list automobiles 
 @require_http_methods(["GET", "POST"])
 def api_automobiles(request):
     if request.method == "GET":
@@ -37,7 +37,7 @@ def api_automobiles(request):
             response.status_code = 400
             return response
 
-
+#automobile detail 
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_automobile(request, vin):
     if request.method == "GET":
@@ -68,7 +68,7 @@ def api_automobile(request, vin):
             content = json.loads(request.body)
             auto = Automobile.objects.get(vin=vin)
 
-            props = ["color", "year"]
+            props = ["color", "year", "sold"]
             for prop in props:
                 if prop in content:
                     setattr(auto, prop, content[prop])
@@ -83,7 +83,7 @@ def api_automobile(request, vin):
             response.status_code = 404
             return response
 
-
+#list manufacturers
 @require_http_methods(["GET", "POST"])
 def api_manufacturers(request):
     if request.method == "GET":
@@ -108,7 +108,7 @@ def api_manufacturers(request):
             response.status_code = 400
             return response
 
-
+#manufactuer detail 
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_manufacturer(request, pk):
     if request.method == "GET":
@@ -154,7 +154,7 @@ def api_manufacturer(request, pk):
             response.status_code = 404
             return response
 
-
+#vehicle model list view 
 @require_http_methods(["GET", "POST"])
 def api_vehicle_models(request):
     if request.method == "GET":
@@ -182,7 +182,7 @@ def api_vehicle_models(request):
             response.status_code = 400
             return response
 
-
+#vehicle model detail view 
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_vehicle_model(request, pk):
     if request.method == "GET":
