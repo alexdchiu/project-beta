@@ -16,8 +16,6 @@ class Automobiles extends React.Component {
       const autoResponse = await fetch(autoURL)
       if (autoResponse.ok) {
         const autoData = await autoResponse.json()
-
-        console.log('auto data', autoData.autos)
         this.setState({
           automobiles: autoData.autos,
         })

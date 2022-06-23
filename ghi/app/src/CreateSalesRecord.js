@@ -23,7 +23,6 @@ class CreateSalesRecord extends React.Component {
     delete data.autos;
     delete data.customers;
     delete data.salepersons;
-    console.log('data: ', data)
 
     const salerecordURL = 'http://localhost:8090/salerecord/new/';
     const fetchConfig = {
@@ -116,6 +115,7 @@ class CreateSalesRecord extends React.Component {
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
             <h1>Create a new sales record</h1>
+            <p>Note: selling a car already sold will result in a 404 error and no sale record being made.</p>
             <form onSubmit={this.handleSubmit} id="create-hat-form">
             <div className="form-floating mb-3">
             <select onChange={this.handleSalesPersonChange} required name="saleperson" id="saleperson" value={this.state.saleperson} className="form-select">

@@ -5,11 +5,11 @@ function Nav() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">CarCar</NavLink>
-        <NavLink className="navbar-brand" to="/customer/new/">Create Customer</NavLink>
-        <NavLink className="navbar-brand" to="/salesperson/new/">Create Sales Person</NavLink>
-        <NavLink className="navbar-brand" to="/salerecord/new/">Create Sales Record</NavLink>
-        <NavLink className="navbar-brand" to="/salerecord">List all Sales Records</NavLink>
-        <NavLink className="navbar-brand" to="/salerecordbyperson">Sales Records Per Person</NavLink>
+        <NavLink className="navbar-brand" to="customer/new/">Create Customer</NavLink>
+        <NavLink className="navbar-brand" to="salesperson/new/">Create Sales Person</NavLink>
+        <NavLink className="navbar-brand" to="salerecord/new/">Create Sales Record</NavLink>
+        <NavLink className="navbar-brand" to="salerecord">List all Sales Records</NavLink>
+        <NavLink className="navbar-brand" to="salerecordbyperson">Sales Records Per Person</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

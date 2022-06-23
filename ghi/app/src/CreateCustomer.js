@@ -18,7 +18,6 @@ class CreateCustomerForm extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = {...this.state};
-    // console.log(data)
 
     const customerURL = 'http://localhost:8090/customer/new/';
     const fetchConfig = {

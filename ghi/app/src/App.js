@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
         </Routes>
         <Routes>
-          <Route path="/customer/new" element={<CreateCustomer />} />
+          <Route path="/customer/new/" element={<CreateCustomer />} />
         </Routes>
         <Routes>
           <Route path="/salesperson/new" element={<CreateSalesPerson />} />

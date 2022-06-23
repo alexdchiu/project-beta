@@ -16,8 +16,6 @@ class SaleRecordList extends React.Component {
       const salerecordRespnse = await fetch(salerecordURL)
       if (salerecordRespnse.ok) {
         const salerecordData = await salerecordRespnse.json()
-
-        console.log('sale record data', salerecordData.salerecord)
         this.setState({
             salerecords: salerecordData.salerecord,
         })

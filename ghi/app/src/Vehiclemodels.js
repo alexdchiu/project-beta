@@ -16,8 +16,6 @@ class VehicleModels extends React.Component {
       const vehiclemodelResponse = await fetch(vehicleURL)
       if (vehiclemodelResponse.ok) {
         const vehiclemodelData = await vehiclemodelResponse.json()
-
-        console.log('vehiclemodelData ', vehiclemodelData.models)
         this.setState({
             vehiclemodels: vehiclemodelData.models,
         })
