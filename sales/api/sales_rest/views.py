@@ -8,7 +8,7 @@ from .models import Customer as CustomerModel
 
 class AutomobileVODetailEncoder(ModelEncoder): 
     model = AutomobileVO 
-    properties = ["vin"] 
+    properties = ["vin", "sold"] 
 
 class SalesPersonEncoder(ModelEncoder): 
     model = SalesPerson 
