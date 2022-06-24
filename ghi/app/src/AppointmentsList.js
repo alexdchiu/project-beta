@@ -84,8 +84,6 @@ class AppointmentsList extends React.Component {
   }
 
   render () {
-
-
     return (
       <div>
         <h1>List of open / unfinished appointments</h1>
