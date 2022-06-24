@@ -1,5 +1,5 @@
 import React from 'react'
-import { UNSAFE_LocationContext } from 'react-router-dom'
+
 
 class CreateSalesPerson extends React.Component {
   constructor (props) {
@@ -16,7 +16,6 @@ class CreateSalesPerson extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = {...this.state};
-    // console.log(data)
 
     const customerURL = 'http://localhost:8090/salesperson/new/';
     const fetchConfig = {

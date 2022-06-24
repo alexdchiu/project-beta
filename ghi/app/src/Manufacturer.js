@@ -1,5 +1,6 @@
 import React from 'react'
-// import handleDelete from './DeleteAppointment'
+
+
 class Manufacturers extends React.Component {
   constructor(props) {
     super(props)
@@ -17,7 +18,6 @@ class Manufacturers extends React.Component {
       if (manufacturerResponse.ok) {
         const manufacturerData = await manufacturerResponse.json()
 
-        // console.log('manufacturerData ', manufacturerData)
         this.setState({
             manufacturers: manufacturerData.manufacturers,
         })

@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class CreateAppointmentForm extends React.Component {
   constructor (props) {
     super(props)
@@ -23,7 +24,6 @@ class CreateAppointmentForm extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = {...this.state};
-    // console.log(data);
     delete data.technicians;
 
     const appointmentUrl = 'http://localhost:8080/appointments/';
@@ -86,7 +86,6 @@ class CreateAppointmentForm extends React.Component {
     const response = await fetch(url)
     if (response.ok) {
       const data = await response.json()
-      // console.log(data)
       this.setState({technicians:data.technicians})
     }
   }

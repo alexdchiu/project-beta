@@ -24,20 +24,16 @@ class AppointmentsList extends React.Component {
       if (appointmentResponse.ok && inventoryVinResponse.ok) {
         const appointmentData = await appointmentResponse.json()
         const inventoryVinData = await inventoryVinResponse.json()
-        // console.log('appointment data', appointmentData.appointments)
-        // console.log('inventory vins data', inventoryVinData.inventory_vins)
         const appointments = []
         for (let appointment of appointmentData.appointments) {
           if (appointment.finished === false) {
             appointments.push(appointment)
           }
         }
-        // console.log('appointments', appointments)
         const inventoryVins = []
         for (let inventoryVin of inventoryVinData.inventory_vins) {
           inventoryVins.push(inventoryVin['vin'])
         }
-        // console.log(inventoryVins)
         this.setState({
           appointments: appointments,
           inventoryVins: inventoryVins,
@@ -49,7 +45,6 @@ class AppointmentsList extends React.Component {
   }
 
   async handleDelete (e) {
-    // console.log(e.target.value)
     const appointmentId = e.target.value
     const appointmentUrl = `http://localhost:8080/appointments/${appointmentId}`
     const fetchConfig = {
@@ -63,19 +58,14 @@ class AppointmentsList extends React.Component {
   }  
 
   async handleFinish (e) {
-    // console.log(e.target.id)
     const data = {...this.state};
     const appointments = data.appointments
     console.log(appointments)
     var filtered_data = appointments.filter(obj => {
-      // console.log('obj', obj.id, 'targetId', typeof(e.target.id))
       return obj.id === Number(e.target.id)
     })
-    // console.log(filtered_data)
     filtered_data[0]['finished'] = true
     const appointmentId = e.target.id
-    // console.log('update', filtered_data)
-    // console.log('apptId', appointmentId)
 
     const appointmentUrl = `http://localhost:8080/appointments/${appointmentId}`
     const fetchConfig = {

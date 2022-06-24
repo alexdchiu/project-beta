@@ -38,7 +38,6 @@ class CreateVehicleModel extends React.Component {
     delete data.pictureUrl
     delete data.manufacturerId
     delete data.manufacturers
-    // console.log(data)
 
     const modelUrl = 'http://localhost:8100/api/models/'
     const fetchConfig = {

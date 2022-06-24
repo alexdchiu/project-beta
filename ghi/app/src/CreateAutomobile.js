@@ -51,7 +51,6 @@ class CreateAutomobile extends React.Component {
     data.model_id = data.modelId
     delete data.modelId
     delete data.models
-    // console.log(data)
 
     const automobileUrl = 'http://localhost:8100/api/automobiles/'
     const fetchConfig = {
@@ -80,7 +79,6 @@ class CreateAutomobile extends React.Component {
     const response = await fetch(url)
     if (response.ok) {
       const data = await response.json()
-      // console.log(data)
       this.setState({models:data.models})
     }
   }

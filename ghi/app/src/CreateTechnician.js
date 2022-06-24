@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class CreateTechnicianForm extends React.Component {
   constructor (props) {
     super(props)
@@ -15,7 +16,6 @@ class CreateTechnicianForm extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = {...this.state};
-    // console.log(data);
 
     const technicianUrl = 'http://localhost:8080/technicians/';
     const fetchConfig = {

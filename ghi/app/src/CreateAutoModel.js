@@ -1,5 +1,5 @@
 import React from 'react'
-import { UNSAFE_LocationContext } from 'react-router-dom'
+
 
 class CreateAutoModel extends React.Component {
   constructor (props) {
@@ -18,7 +18,6 @@ class CreateAutoModel extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = {...this.state};
-    // console.log(data)
 
     const customerURL = 'http://localhost:8100/api/models/';
     const fetchConfig = {

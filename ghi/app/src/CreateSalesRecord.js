@@ -1,5 +1,5 @@
 import React from 'react'
-import { UNSAFE_LocationContext } from 'react-router-dom'
+
 
 class CreateSalesRecord extends React.Component {
   constructor (props) {
@@ -44,7 +44,6 @@ class CreateSalesRecord extends React.Component {
     };
     const autoResponse = await fetch(automobileURL, autofetchConfig);
     if (autoResponse.ok) {
-      // console.log('Car Sold', autoResponse);
     } else {
       console.error(autoResponse);
     }

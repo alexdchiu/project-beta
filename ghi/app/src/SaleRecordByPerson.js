@@ -1,5 +1,6 @@
 import React from 'react'
-// import handleDelete from './DeleteAppointment'
+
+
 class SaleRecordByPerson extends React.Component {
   constructor(props) {
     super(props)

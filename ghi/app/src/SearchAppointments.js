@@ -1,5 +1,5 @@
 import React from 'react'
-// import App from './App'
+
 
 class SearchAppointments extends React.Component {
   constructor(props) {
@@ -10,7 +10,6 @@ class SearchAppointments extends React.Component {
       filteredAppointments: [],
       searchText: '',
     }
-    // this.handleChange = this.handleChange.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.handleSearchText = this.handleSearchText.bind(this)
   }
@@ -25,18 +24,14 @@ class SearchAppointments extends React.Component {
       if (appointmentResponse.ok && inventoryVinResponse.ok) {
         const appointmentData = await appointmentResponse.json()
         const inventoryVinData = await inventoryVinResponse.json()
-        // console.log('appointment data', appointmentData.appointments)
-        // console.log('inventory vins data', inventoryVinData.inventory_vins)
         const appointments = []
         for (let appointment of appointmentData.appointments) {
             appointments.push(appointment)
         }
-        // console.log('appointments', appointments)
         const inventoryVins = []
         for (let inventoryVin of inventoryVinData.inventory_vins) {
           inventoryVins.push(inventoryVin['vin'])
         }
-        // console.log(inventoryVins)
         this.setState({
           allAppointments: appointments,
           inventoryVins: inventoryVins,
@@ -51,34 +46,6 @@ class SearchAppointments extends React.Component {
     this.getAppointmentsandInventoryVins()
   }
 
-  // handleChange(e) {
-  //   let currentList = this.state.allAppointments
-  //   let currentVins = currentList.map(appointment => appointment.vin)
-  //   console.log('currentVins', currentVins)
-  //   let newList = []
-  //   let resultsList = []
-
-  //   if (e.target.value !== "") {
-  //     // console.log('currentList', currentList)
-  //     newList = currentVins.filter( (v,i) => {
-  //       const lc = v.toLowerCase()
-  //       const filter = e.target.value.toLowerCase()
-  //       // console.log('v', v, 'filter', filter)
-  //       return lc.includes(filter)
-  //     })
-  //   } else {
-  //     resultsList = []
-  //   }
-  //   for (let vin of newList) {
-  //     resultsList.push(currentList[currentVins.indexOf(vin)])
-  //   }
-  //   console.log('resultsList', resultsList)
-  //   this.setState({
-  //     filteredAppointments: resultsList
-  //   })
-  //   // console.log(this.state)
-  //   // console.log('e value',e.target.value) 
-  // }
 
   handleSearchText(event) {
     const value = event.target.value
@@ -94,7 +61,6 @@ class SearchAppointments extends React.Component {
     let currentList = this.state.allAppointments
     let resultsList = []
     for (let appointment of currentList) {
-      // console.log('appointment.vin', appointment.vin, 'searchFor', searchFor)
       if (appointment.vin.toLowerCase().includes(searchFor)) {
         resultsList.push(appointment)
       }
@@ -102,7 +68,6 @@ class SearchAppointments extends React.Component {
     this.setState(
       {filteredAppointments: resultsList}
     )
-    // console.log('resultsList', resultsList)
   }
 
   render () {
@@ -114,7 +79,6 @@ class SearchAppointments extends React.Component {
             type="text"
             className="input"
             placeholder="Enter VIN (or partial)"
-            // onChange={this.handleChange}
             onChange={this.handleSearchText}
             value={this.state.searchText}
           />
